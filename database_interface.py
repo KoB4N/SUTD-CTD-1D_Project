@@ -18,7 +18,7 @@ key_hs = "highScores"
 key_ls = "latestScores"
 score_index = 1
 scoreboard_size = 10
-
+window_size = 50
 
 def update_score(username, user_score):
 
@@ -94,6 +94,10 @@ def fetch_high_scores():
             score = int(score)
             record_time = float(record_time)
             highscore_list.append([name, score, record_time])
+
+    # Placeholder function to format list into string.
+    highscore_list = leaderboard_format(highscore_list)
+
     return highscore_list
 
 
@@ -117,4 +121,21 @@ def fetch_latest_scores():
             score = int(score)
             record_time = float(record_time)
             latest_scores_list.append([name, score, record_time])
+
+    # Placeholder function to format list into string.
+    latest_scores_list = leaderboard_format(latest_scores_list)
+    
     return latest_scores_list
+
+
+def leaderboard_format(score_list):
+
+    """Takes in the score list from fetch_high_scores() or fetch_latest_scores()
+       and returns a formatted string that fits into the set text box from 2048.py."""
+
+    formatted_string = []
+    for score in score_list:
+        spaces = " " * (50 - len(score[0]) - len(str(score[1])))
+        formatted_string.append(score[0] + spaces + str(score[1]))
+
+    return formatted_string
