@@ -364,7 +364,7 @@ class Game(tk.Frame):
 
 class signUp(tk.Frame):
     def __init__(self, master = None):
-        tk.Frame.__init__(self, master)
+        tk.Frame.__init__(self, master, bg='#F2D0A4')
         self.grid(sticky="nsew")
         self.master.columnconfigure(0, weight=1)
         self.master.rowconfigure(0, weight=1)
@@ -376,7 +376,8 @@ class signUp(tk.Frame):
         self.label = tk.Label(
             self, 
             text="Fill in to Record Your Score!", 
-            font=c.SCORE_LABEL_FONT
+            font=c.SCORE_LABEL_FONT,
+            bg='#F7F7FF'
             ).place(relx=0.5, rely=0.05, anchor=tk.CENTER)
 
 
@@ -384,8 +385,9 @@ class signUp(tk.Frame):
         self.entry_label = tk.Label(
             self, 
             text="Username:",
-            font=c.USERNAME_LABEL
-            ).place(relx=0.21, rely=0.28)
+            font=c.USERNAME_LABEL,
+            bg='#F7F7FF'
+            ).place(relx=0.19, rely=0.275)
     
         
         ### Username Entry
@@ -401,6 +403,7 @@ class signUp(tk.Frame):
             text="SUBMIT",
             font=c.SUBMIT_BTN,
             border=3,
+            bg='#C03221', #92374D
             command=self.dbUpload
             )
         self.submit_btn.place(relx=0.72, rely=0.3, anchor=tk.CENTER)
@@ -436,7 +439,7 @@ class signUp(tk.Frame):
 
 class Scores(tk.Frame):
     def __init__(self, master = None):
-        tk.Frame.__init__(self, master)
+        tk.Frame.__init__(self, master, bg='#8447FF')
         self.grid(sticky="nsew")
         self.master.columnconfigure(0, weight=1)
         self.master.rowconfigure(0, weight=1)
@@ -464,7 +467,7 @@ class Scores(tk.Frame):
             self,
             wrap=tk.WORD,
             width=50, 
-            height=15, 
+            height=15,
             state='disabled',
             )
         self.display_scores.place(relx=0.5, rely=0.4, anchor=tk.CENTER)
@@ -491,8 +494,12 @@ class Scores(tk.Frame):
 
         if (selected_option == "Leaderboard"):
             content = leaderboard_content
+            self.selectionDropdown.configure(bg='#D7DAE5')
+            self.display_scores.configure(bg='#D7DAE5')
         elif (selected_option == "Recent Scores"):
             content = recent_content
+            self.selectionDropdown.configure(bg='#CEB992')
+            self.display_scores.configure(bg='#CEB992')
 
 
         self.display_scores.configure(state='normal')
@@ -513,7 +520,7 @@ class Scores(tk.Frame):
 
 class Ending(tk.Frame):
     def __init__(self, master = None):
-        tk.Frame.__init__(self, master)
+        tk.Frame.__init__(self, master, bg='#CA6680')
         self.grid(sticky="nsew")
         self.master.columnconfigure(0, weight=1)
         self.master.rowconfigure(0, weight=1)
@@ -525,22 +532,25 @@ class Ending(tk.Frame):
         self.label = tk.Label(
             self, 
             text="THANK YOU FOR PLAYING!", 
-            font=c.SCORE_LABEL_FONT
+            font=c.SCORE_LABEL_FONT,
+            bg='#CA6680'
             ).place(relx=0.5, rely=0.05, anchor=tk.CENTER)
         
 
         self.label1 = tk.Label(
             self, 
             text="CREDITS:", 
-            font=c.SCORE_LABEL_FONT
+            font=c.SCORE_LABEL_FONT,
+            bg='#CA6680'
             ).place(relx=0.5, rely=0.15, anchor=tk.CENTER)
         
 
         self.label2 = tk.Label(
             self, 
             text="1. Afrith Ahamed A. (1008109)\n\n 2. Darrell Lu Jun Qiang (1007857)\n\n 3. Khoo Li Cheng Dylan (1005088)\n\n 4. Tan Tian Kovan (1007519)\n\n 5. Varsha Ramesh (1008477)\n\n 6. Chong Zhi Xun (1008140)", 
-            font=c.USERNAME_LABEL
-            ).place(relx=0.5, rely=0.4, anchor=tk.CENTER)
+            font=c.USERNAME_LABEL,
+            bg='#93B7BE'
+            ).place(relx=0.5, rely=0.43, anchor=tk.CENTER)
         
 
         ### Return to Game Btn 
@@ -550,7 +560,7 @@ class Ending(tk.Frame):
             font=c.NEXT_BTN,
             border=5,
             command=self.confirm_prompt
-            ).place(relx=0.85, rely=0.7, anchor=tk.CENTER)
+            ).place(relx=0.85, rely=0.71, anchor=tk.CENTER)
         
         
         ### Return to Display Score Page
@@ -560,7 +570,7 @@ class Ending(tk.Frame):
             font=c.NEXT_BTN,
             border=5,
             command=self.goBack
-            ).place(relx=0.15, rely=0.7, anchor=tk.CENTER)
+            ).place(relx=0.15, rely=0.71, anchor=tk.CENTER)
         
     
     def confirm_prompt(self):
